@@ -45,17 +45,17 @@ pipeline {
                 sh 'npm install'
                 sh 'npm audit --parseable > /tmp/npm/audit || true'
             }
-        post {
-            always {
-                recordIssues {
-                    tool: groovyScript(parserId: 'npm-audit', pattern: '/tmp/npm/audit'),
+            post {
+                always {
+                    recordIssues {
+                        tool: groovyScript(parserId: 'npm-audit', pattern: '/tmp/npm/audit'),
                         qualityGates: [
                             [threshold: 20, type: 'TOTAL', unstable: true],
                             [threshold: 1, type: 'TOTAL_ERROR', unstable: false]
                         ]
+                    }
                 }
             }
-        }
         }
     }
 }   
