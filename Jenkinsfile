@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                 set +ex
                 export NVM_DIR="$HOME/.nvm"
-                . ~/.nvm./nvm.sh
+                . ~/.nvm/nvm.sh
                 nvm install 11.15.0
                 nvm use 11.15.0
                 set -ex
