@@ -39,8 +39,6 @@ pipeline {
                     )
                     def parsers = config.getParsers().findAll { it.getId() != 'npm-audit' }
                     config.setParsers(config.getParsers().plus(newParser))
-}
-
                 }
                 sh 'npm install'
                 sh 'npm audit --parseable > /tmp/npm/audit || true'
