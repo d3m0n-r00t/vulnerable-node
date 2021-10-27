@@ -8,7 +8,7 @@ pipeline {
                     def newParser = new io.jenkins.plugins.analysis.warnings.groovy.GroovyParser(
                         'npm-audit',
                         'NPM Audit Parser',
-                        '\w+\t(\S+)\t(\w+)\t(\S| )+\t((\S| )+)\t(\S+)\t(\S+)',
+                        '\\w+\\t(\\S+)\\t(\\w+)\\t(\\S| )+\\t((\\S| )+)\\t(\\S+)\\t(\\S+)',
                         """
                         import edu.hm.hafner.analysis.Severity
                         Severity severity
