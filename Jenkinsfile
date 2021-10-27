@@ -4,7 +4,7 @@ pipeline {
         stage ("NPM Audit Analysis") {
             steps {
                 sh 'npm install'
-                sh '/home/sreekanth/devsecops/scripts/npm-audit.sh'
+                sh 'npm-audit --json > /var/lib/jenkins/reports/npm-audit-report'
             }
         }
     }
