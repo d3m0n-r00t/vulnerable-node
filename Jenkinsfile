@@ -4,8 +4,7 @@ pipeline {
         stage ("NPM Audit Analysis") {
             steps {
                 sh 'npm install'
-                sh 'pwd'
-                sh 'ls'
+                sh '/home/sreekanth/devsecops/scripts/npm-audit.sh'
             }
         }
     }
