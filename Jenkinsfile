@@ -3,14 +3,6 @@ pipeline {
     stages {
         stage ("NPM Audit Analysis") {
             steps {
-                sh '''
-                set +ex
-                export NVM_DIR="$HOME/.nvm"
-                . ~/.nvm/nvm.sh
-                nvm use 11.15.0
-                set -ex
-                '''
-                sh 'nvm use 11.15.0'
                 sh 'npm install'
                 sh 'mkdir -p .tmp'
                 sh 'npm audit --json | bin/transorm-audit.js > .tmp/npm-audit.json || true'
@@ -28,4 +20,4 @@ pipeline {
             }
         }
     }
-}   
+}    
