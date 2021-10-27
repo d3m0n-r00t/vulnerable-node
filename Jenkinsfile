@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'mkdir -p .tmp'
-                sh 'npm audit --json | bin/transform-audit.js > .tmp/npm-audit.json || true'
+                sh 'npm audit --json | node bin/transform-audit.js > .tmp/npm-audit.json || true'
             }
             post {
                 always {
