@@ -47,13 +47,13 @@ pipeline {
             }
             post {
                 always {
-                    recordIssues {
-                        tool: groovyScript(parserId: 'npm-audit', pattern: '/tmp/npm/audit'),
+                    recordIssues(
+                        tool: groovyScript(parserId:'npm-audit', pattern:'/tmp/npm/audit'),
                         qualityGates: [
                             [threshold: 20, type: 'TOTAL', unstable: true],
                             [threshold: 1, type: 'TOTAL_ERROR', unstable: false]
                         ]
-                    }
+                    )
                 }
             }
         }
