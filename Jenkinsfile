@@ -19,5 +19,10 @@ pipeline {
                 }
             }
         }
+        stage("NodeJsScan") {
+            steps {
+                sh 'nodejsscan --directory `pwd` --output .tmp/nodejsscan-report'
+            }
+        }
     }
 }    
