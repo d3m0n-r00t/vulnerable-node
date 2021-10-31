@@ -19,6 +19,11 @@ pipeline {
                 }
             }
         }
+        stage("OWASP Dependecy Check") {
+            steps {
+                sh '/var/lib/jenkins/dependency-check/bin/dependency-check.sh --scan `pwd` --format JSON --out .tmp/owasp-report --prettyPrint'
+            }
+        }
         stage("NodeJsScan") {
             steps {
                 sh 'nodejsscan --directory `pwd` --output .tmp/nodejsscan-report'
