@@ -31,7 +31,7 @@ pipeline {
         }
         stage("Run app for DAST") {
             steps {
-                sh 'docker-compose build && docker-compose up'
+                sh 'docker-compose build && docker-compose up --detach'
             }
         }
         stage("Run ZAP for DAST") {
