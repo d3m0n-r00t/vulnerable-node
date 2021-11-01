@@ -13,5 +13,7 @@ services:
   postgres_db:
     restart: always
     build: ./services/postgresql
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
     ports:
       - "5432:5432"

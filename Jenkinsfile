@@ -29,5 +29,15 @@ pipeline {
                 sh 'nodejsscan --directory `pwd` --output .tmp/nodejsscan-report'
             }
         }
+        stage("Run app for DAST") {
+            sh 'docker-compose build && docker-compose up'
+        }
+        stage("Run ZAP for DAST") {
+            sh '/var/lib/jenkins/scripts/baseline-scan.sh'
+        }
+        stage("Stop app") {
+            sh 'docker-compose down'
+            sh 'mv baseline-report.html .tmp/zap-report.html'
+        }
     }
 }    
