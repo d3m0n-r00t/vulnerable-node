@@ -13,7 +13,7 @@ pipeline {
                         tool: issues(name:'NPM Audit Analysis', pattern:'.tmp/npm-audit.json'),
                         qualityGates: [
                             [threshold: 20, type: 'TOTAL', unstable: true],
-                            [threshold: 1, type: 'TOTAL_ERROR', unstable: false]
+                            [threshold: 1, type: 'TOTAL_ERROR', unstable: true]
                         ]
                     )
                 }
@@ -43,12 +43,21 @@ pipeline {
         stage("Stop app") {
             steps {
                 sh 'docker-compose down'
-                sh 'mv baseline-report.html .tmp/zap-report.html'
             }
         }
         stage("Jshint") {
             steps {
                 sh '/var/lib/jenkins/scripts/js-lint-scan.sh'
+            }
+        }
+        stage("Build App") {
+            steps {
+                sh 'echo "Building Application"'
+            }
+        }
+        stage("Deploy App") {
+            steps {
+                sh 'echo "Deploying Application"'
             }
         }
     }
