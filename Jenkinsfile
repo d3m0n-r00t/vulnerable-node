@@ -46,5 +46,10 @@ pipeline {
                 sh 'mv baseline-report.html .tmp/zap-report.html'
             }
         }
+        stage("Jshint") {
+            steps {
+                sh '/var/lib/jenkins/scripts/js-lint-scan.sh'
+            }
+        }
     }
 }    
